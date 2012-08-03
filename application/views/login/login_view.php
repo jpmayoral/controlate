@@ -1,5 +1,5 @@
 	<?=validation_errors();?>	
-	<form class="well" action="<?=base_url();?>login/verifyLogin" method="post" accept-charset="utf-8">
+	<form class="well" action="<?=base_url();?>verifylogin" method="post" accept-charset="utf-8">
 		<fieldset>
 			<legend>Login</legend>
 			<label for="usuario_email">Email:</label>

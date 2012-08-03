@@ -5,14 +5,8 @@
 class Usuarios extends CI_Model
 {
 	
-	function login($usuarioEmail,$password){
-		$this->db->select('usuario_id','usuario_apellido','usuario_nombre','usuario_email','usuario_password');
-		$this->db->from('usuarios');
-		$this->db->where('usuario_email = '."'".$usuarioEmail."'");
-		$this->db->where('usuario_password = '."'".md5($password)."'");
-		$this->db->limit(1);
-
-		$query=$this->db->get();
+	function login($usuario_email,$usuario_password){
+		$query=$this->db->get_where('usuarios',array('usuario_email'=>$usuario_email,'usuario_password'=>md5($usuario_password)),1);
 
 		if($query->num_rows() == 1){
 			return $query->result();
