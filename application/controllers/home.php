@@ -27,8 +27,11 @@ class Home extends CI_Controller
 	
 	function logout(){
 		$this->session->unset_userdata('logged_in');
-		session_destroy();
-		redirect('home','refresh');
+		$this->load->view('templates/header');
+		$this->load->view('login/menu_login_view');		
+		$this->load->view('login/login_view');
+		$this->load->view('templates/footer');
+		
 	}
 
 }
