@@ -14,9 +14,10 @@ class Home extends CI_Controller
 			$session_data = $this->session->userdata('logged_in');
 			$data['usuario_apellido'] = $session_data['usuario_apellido'];
 			$data['usuario_nombre'] = $session_data['usuario_nombre'];
-			$data['title']='bienvenido';			
+			$data['title']='Hola';			
 			$this->load->view('templates/header');
 			$this->load->view('templates/menu');
+			$this->load->view('templates/sidebar');
 			$this->load->view('home_view',$data);
 			$this->load->view('templates/footer');			
 		}else{
@@ -28,7 +29,7 @@ class Home extends CI_Controller
 	function logout(){
 		$this->session->unset_userdata('logged_in');
 		$this->load->view('templates/header');
-		$this->load->view('login/menu_login_view');		
+		$this->load->view('templates/menu');		
 		$this->load->view('login/login_view');
 		$this->load->view('templates/footer');
 		
