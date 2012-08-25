@@ -10,7 +10,7 @@
 					<div class="nav-collapse">
 						<ul class="nav">
 							<li class="active"><a href="<?=base_url().'news';?>">Inicio</a></li>
-							<li><a href="<?=base_url().'news/create';?>">Crear</a></li>		
+							<li><a href="<?=base_url().'pagos_controller/pagos/add';?>">Cargar Pago</a></li>		
 							<li><a href="<?=base_url().'upload/';?>">Subir Archivo</a></li>				
 							<li><a href="#contact">Contacto</a></li>
 						</ul>
