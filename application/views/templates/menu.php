@@ -1,5 +1,5 @@
 <!-- navbar navbar-fixed-top: start -->
-	<div class="navbar navbar-fixed-top">
+	<div class="navbar navbar-inverse navbar-fixed-top">
 		<!-- navbar-inner: start -->
 		<div class="navbar-inner">
 			<div class="container-fluid">				
@@ -7,7 +7,7 @@
 				<? if($this->session->userdata('logged_in')):?>
 				<? $session_data = $this->session->userdata('logged_in'); ?>
 					<!-- .nav-collapse: start -->
-					<div class="nav-collapse">
+					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="active"><a href="<?=base_url();?>">Inicio</a></li>
 							<li><a href="<?=base_url().'pagos_controller/pagos/add';?>">Cargar Pago</a></li>		

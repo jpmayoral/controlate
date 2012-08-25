@@ -1,4 +1,4 @@
-			</div>
+			<!--</div>-->
 	        <!-- span12:end -->
 	    </div>
 	    <!-- row-fluid: end -->
@@ -22,7 +22,6 @@
 		<!-- Javascript placed at the end of the document so the pages load faster -->
 		<script src="<?=base_url();?>assets/bootstrap/js/jquery.js"></script>
 		<script src="<?=base_url();?>assets/bootstrap/js/bootstrap-transition.js"></script>
-		<script src="<?=base_url();?>assets/bootstrap/js/bootstrap-alert.js"></script>
 		<script src="<?=base_url();?>assets/bootstrap/js/bootstrap-modal.js"></script>
 		<script src="<?=base_url();?>assets/bootstrap/js/bootstrap-dropdown.js"></script>
 		<script src="<?=base_url();?>assets/bootstrap/js/bootstrap-scrollspy.js"></script>
