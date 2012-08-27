@@ -1,5 +1,5 @@
 <div class="span9">
-	<h1><?=$title;?> <?php echo $usuario_apellido.' '.$usuario_nombre.'!';?></h1>
+	<h1><?=$title;?> <?php echo $usuario_nombre.' '.$usuario_apellido.'!';?></h1>
 	<h4>Bienvenido a Controlate v1.0</h4>
 	<p>Esta aplicaci&oacute;n te ayudar&aacute; a registrar todos los gastos
 		que tienes durante el mes, con el fin de llevar un control acerca de 

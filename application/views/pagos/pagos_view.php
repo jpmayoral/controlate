@@ -1,3 +1,3 @@
-<div class="span8">
+<div class="span10">
     <?php echo $output; ?>	
 </div>

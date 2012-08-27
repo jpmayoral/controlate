@@ -7,21 +7,20 @@
 				<? if($this->session->userdata('logged_in')):?>
 				<? $session_data = $this->session->userdata('logged_in'); ?>
 					<!-- .nav-collapse: start -->
-					<div class="nav-collapse collapse">
+					<!--<div class="nav-collapse collapse">-->
 						<ul class="nav">
 							<li class="active"><a href="<?=base_url();?>">Inicio</a></li>
 							<li><a href="<?=base_url().'pagos_controller/pagos/add';?>">Cargar Pago</a></li>		
 							<li><a href="<?=base_url().'upload/';?>">Subir Archivo</a></li>				
 							<li><a href="#contact">Contacto</a></li>
+							<li class="divider-vertical">
 						</ul>
-					</div>
+					<!--</div>-->
 					<!-- .nav-collapse: end -->
 					
-					<!--
 					<form class="navbar-search pull-left">
-						<input type="text" class="search-query" placeholder="Buscar Pago">
+					  <input type="text" class="search-query" placeholder="Buscar Pago">
 					</form>
-					-->
 
 					<!-- Info del Usuario -->
 					<div class="btn-group pull-right">						

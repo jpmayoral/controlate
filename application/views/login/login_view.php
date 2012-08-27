@@ -1,6 +1,5 @@
-<div class="span4">
-</div>
-<div class="span4">
+
+<div class="span4 offset4">
 	<?=validation_errors();?>	
 	<form class="well" action="<?=base_url();?>login/verifyLogin" method="post" accept-charset="utf-8">
 		<fieldset>
@@ -24,5 +23,4 @@
 		</fieldset>		
 	</form>
 </div>
-<div class="span4">
-</div>
+
