@@ -38,7 +38,7 @@ class Pagos_Controller extends CI_Controller {
 		$crud->display_as('updated_at','Actualizado');
 
 		/* Seteo el campo comprobante para subir archivos */
-		//$crud->set_field_upload('pago_archivo_comprobante', 'assets/uploads/files');
+		$crud->set_field_upload('pago_archivo_comprobante', 'assets/uploads/files');
 
 		/* Traigo datos de las claves foraneas */
 		$crud->set_relation('pago_categoria_id','categorias','categoria_descripcion');		
