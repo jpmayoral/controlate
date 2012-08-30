@@ -1,11 +1,41 @@
 var default_per_page = typeof default_per_page !== 'undefined' ? default_per_page : 25;
 
 $(document).ready(function() {
+	var mColumns = [];
+	
+	$('table#groceryCrudTable thead tr th').each(function(index){
+		if(!$(this).hasClass('actions'))
+		{
+			mColumns[index] = index;
+		}
+	});
+	
+	var aButtons = [];
+	
+	if(!unset_export)
+	{
+		aButtons.push(    {
+	         "sExtends":    "xls",
+	         "sButtonText": "Export",
+	         "mColumns": mColumns
+	     });
+	}
+	
+	if(!unset_print)
+	{
+		aButtons.push({
+	         "sExtends":    "print",
+	         "sButtonText": "Print",
+	         "mColumns": mColumns
+	     });		
+	}
+	
 	oTable = $('#groceryCrudTable').dataTable({
 		"bJQueryUI": true,
 		"sPaginationType": "full_numbers",
 		"bStateSave": true,
 		"iDisplayLength": default_per_page,
+		"aaSorting": datatables_aaSorting,
 		"oLanguage":{
 		    "sProcessing":   list_loading,
 		    "sLengthMenu":   show_entries_string,
@@ -20,8 +50,12 @@ $(document).ready(function() {
 		        "sNext":     paging_next,
 		        "sLast":     paging_last
 		    }		
-		}
-
+		},
+		"sDom": 'T<"clear"><"H"lfr>t<"F"ip>',
+	    "oTableTools": {
+	    	"aButtons": aButtons,
+	        "sSwfPath": base_url+"assets/grocery_crud/themes/datatables/extras/TableTools/media/swf/copy_csv_xls_pdf.swf"
+	    }
 	});
 
 	$('a[role=button]').live("mouseover mouseout", function(event) {

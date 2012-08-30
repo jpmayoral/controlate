@@ -4,8 +4,8 @@
 	$this->set_css($this->default_theme_path.'/datatables/css/datatables.css');
 	$this->set_js($this->default_theme_path.'/flexigrid/js/jquery.form.js');	
 	$this->set_js($this->default_theme_path.'/datatables/js/datatables-edit.js');
-	$this->set_css($this->default_css_path.'/ui/simple/jquery-ui-1.8.10.custom.css');
-	$this->set_js($this->default_javascript_path.'/jquery_plugins/jquery-ui-1.8.10.custom.min.js');	
+	$this->set_css($this->default_css_path.'/ui/simple/jquery-ui-1.8.23.custom.css');
+	$this->set_js($this->default_javascript_path.'/jquery_plugins/ui/jquery-ui-1.8.23.custom.min.js');	
 ?>
 <script type='text/javascript'>
 	var base_url = '<?php echo base_url();?>';
@@ -16,14 +16,7 @@
 	<h3 class="ui-accordion-header ui-helper-reset ui-state-default form-title">
 		<div class='floatL form-title-left'>
 			<a href="#"><?php echo $this->l('form_edit'); ?> <?php echo $subject?></a>
-		</div> 
-<?php 	if(!$this->unset_back_to_list) { ?>
-		<div class='floatR'>
-			<a href='<?php echo $list_url?>' onclick='javascript: return goToList()' class='gotoListButton' >
-				<?php echo $this->l('form_back_to_list'); ?>
-			</a>
-		</div>
-<?php 	} ?>		
+		</div> 		
 		<div class='clear'></div>
 	</h3>
 <div class='form-content form-div'>

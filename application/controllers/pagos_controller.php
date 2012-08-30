@@ -2,6 +2,8 @@
 
 class Pagos_Controller extends CI_Controller {
 
+	
+
 	function __construct()
 	{
 		parent::__construct();		
@@ -14,30 +16,37 @@ class Pagos_Controller extends CI_Controller {
 	
 	function pagos()
 	{
-		$this->grocery_crud->set_table('pagos');
+		$crud = new grocery_CRUD();
+
+		$crud->set_table('pagos');
+		$crud->set_subject('Pago');
 		
-		$this->grocery_crud->display_as('pago_nro_referencia','Nº de Referencia');
-		$this->grocery_crud->display_as('pago_periodo_desde','Periodo Desde');
-		$this->grocery_crud->display_as('pago_periodo_hasta','Periodo Hasta');
-		$this->grocery_crud->display_as('pago_fecha_vencimiento','Fecha de Vencimiento');
-		$this->grocery_crud->display_as('pago_detalle','Detalle');
-		$this->grocery_crud->display_as('pago_archivo_comprobante','Comprobante');
-		$this->grocery_crud->display_as('pago_importe','Importe');
-		$this->grocery_crud->display_as('pago_categoria_id','Categoría');
-		$this->grocery_crud->display_as('pago_subcategoria_id','Subcategoría');
-		$this->grocery_crud->display_as('pago_medio_de_pago_id','Medio de Pago');
-		$this->grocery_crud->display_as('pago_usuario_id','Usuario');
-		$this->grocery_crud->display_as('pago_estado_pago_id','Estado del Pago');	
-		$this->grocery_crud->display_as('created_at','Creado');	
-		$this->grocery_crud->display_as('updated_at','Actualizado');
+		/* Defino los labels del formulario */
+		$crud->display_as('pago_nro_referencia','Nº de Referencia');
+		$crud->display_as('pago_periodo_desde','Periodo Desde');
+		$crud->display_as('pago_periodo_hasta','Periodo Hasta');
+		$crud->display_as('pago_fecha_vencimiento','Fecha de Vencimiento');
+		$crud->display_as('pago_detalle','Detalle');
+		$crud->display_as('pago_archivo_comprobante','Comprobante');
+		$crud->display_as('pago_importe','Importe');
+		$crud->display_as('pago_categoria_id','Categoría');
+		$crud->display_as('pago_subcategoria_id','Subcategoría');
+		$crud->display_as('pago_medio_de_pago_id','Medio de Pago');
+		$crud->display_as('pago_usuario_id','Usuario');
+		$crud->display_as('pago_estado_pago_id','Estado del Pago');	
+		$crud->display_as('created_at','Creado');	
+		$crud->display_as('updated_at','Actualizado');
 
-		$this->grocery_crud->set_relation('pago_categoria_id','categorias','categoria_descripcion');		
-		$this->grocery_crud->set_relation('pago_subcategoria_id','subcategorias','subcategoria_descripcion');		
-		$this->grocery_crud->set_relation('pago_medio_de_pago_id','medios_de_pago','medio_de_pago_descripcion');		
-		$this->grocery_crud->set_relation('pago_usuario_id','usuarios','usuario_apellido');		
-		$this->grocery_crud->set_relation('pago_estado_pago_id','estados_pagos','estado_pago_descripcion');		
+		/* Seteo el campo comprobante para subir archivos */
+		//$crud->set_field_upload('pago_archivo_comprobante', 'assets/uploads/files');
 
-		$output = $this->grocery_crud->render();
+		/* Traigo datos de las claves foraneas */
+		$crud->set_relation('pago_categoria_id','categorias','categoria_descripcion');		
+		$crud->set_relation('pago_subcategoria_id','subcategorias','subcategoria_descripcion');		
+		$crud->set_relation('pago_medio_de_pago_id','medios_de_pago','medio_de_pago_descripcion');				
+		$crud->set_relation('pago_estado_pago_id','estados_pagos','estado_pago_descripcion');		
+
+		$output = $crud->render();
 
 		$this->mostrarPagos($output);		
 	}
