@@ -3,7 +3,7 @@
 		<!-- navbar-inner: start -->
 		<div class="navbar-inner">
 			<div class="container-fluid">				
-				<a class="brand" href="#">Controlate v1.0</a>
+				<a class="brand" href="<?=base_url();?>">Controlate v1.0</a>
 				<? if($this->session->userdata('logged_in')):?>
 				<? $session_data = $this->session->userdata('logged_in'); ?>
 					<!-- .nav-collapse: start -->
