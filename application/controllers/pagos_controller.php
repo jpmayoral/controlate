@@ -11,16 +11,11 @@ class Pagos_Controller extends CI_Controller {
 
 	function index()
 	{
-		echo "<h1>Welcome to GroceryCRUD</h1>";
-	}	
-	
-	function pagos()
-	{
 		$crud = new grocery_CRUD();
 
 		$crud->set_table('pagos');
 		$crud->set_subject('Pago');
-		
+
 		/* Defino los labels del formulario */
 		$crud->display_as('pago_nro_referencia','Nº de Referencia');
 		$crud->display_as('pago_periodo_desde','Periodo Desde');
@@ -40,6 +35,16 @@ class Pagos_Controller extends CI_Controller {
 		/* Seteo el campo comprobante para subir archivos */
 		$crud->set_field_upload('pago_archivo_comprobante', 'assets/uploads/files');
 
+		/* Campos obligatorios */
+		$crud->required_fields('pago_detalle','pago_importe','pago_categoria_id',
+				'pago_subcategoria_id','pago_medio_de_pago_id','pago_usuario_id','pago_estado_pago_id');
+
+		/* Setting rules are the same way as codeigniter */
+		$crud->set_rules('pago_importe','Importe','integer');
+
+		/* Elimino el editor de textos del campo detalle */
+		$crud->unset_texteditor('pago_detalle');
+
 		/* Traigo datos de las claves foraneas */
 		$crud->set_relation('pago_categoria_id','categorias','categoria_descripcion');		
 		$crud->set_relation('pago_subcategoria_id','subcategorias','subcategoria_descripcion');		
@@ -49,8 +54,8 @@ class Pagos_Controller extends CI_Controller {
 		$output = $crud->render();
 
 		$this->mostrarPagos($output);		
-	}
-
+	}	
+	
 	function mostrarPagos($output=null){
 		$this->load->view('templates/header',$output);
 		//$this->load->view('templates/groceryCRUD',$output);
