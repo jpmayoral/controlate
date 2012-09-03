@@ -30,7 +30,7 @@ class Pagos_Controller extends CI_Controller {
 		$crud->display_as('created_at','Creado');	
 		$crud->display_as('updated_at','Actualizado');
 
-		/*
+		
 		$crud->add_fields('pago_nro_referencia','pago_periodo_desde','pago_periodo_hasta',
 						'pago_fecha_vencimiento','pago_detalle','pago_archivo_comprobante',
 						'pago_importe','pago_categoria_id','pago_subcategoria_id',
@@ -41,17 +41,17 @@ class Pagos_Controller extends CI_Controller {
 						'pago_importe','pago_categoria_id','pago_subcategoria_id',
 						'pago_medio_de_pago_id','pago_usuario_id','pago_estado_pago_id',
 						'updated_at');
-		*/
+		
 
 		/* Seteo el campo comprobante para subir archivos */
 		$crud->set_field_upload('pago_archivo_comprobante', 'assets/uploads/files');
 
 		$crud->change_field_type('pago_usuario_id','hidden',3);
 
-		$created_at = date('d/m/Y H:m:s');
-		$updated_at = date('d/m/Y H:m:s');
-		//$crud->change_field_type('created_at','hidden',$created_at);
-		//$crud->change_field_type('updated_at','hidden',$updated_at);
+		$now = date('d/m/Y h:m:s');
+		
+		$crud->change_field_type('created_at','hidden',$now);
+		$crud->change_field_type('updated_at','hidden',$now);
 
 		/* Campos obligatorios */
 		$crud->required_fields('pago_detalle','pago_importe','pago_categoria_id',
