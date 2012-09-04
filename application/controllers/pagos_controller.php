@@ -72,8 +72,45 @@ class Pagos_Controller extends CI_Controller {
 
 		$output = $crud->render();
 
-		$this->mostrarPagos($output);		
+		/* Dependent dropdown setup */
+		$dd_data = array(
+			/* Get the state of the current page - e.g list/add */
+			'dd_state' =>  $crud->getState(),
+			
+			/* Parent field item always listed first in array, in this case countryID
+			Child field items need to follow in order, e.g stateID then cityID */
+			'dd_dropdowns' => array('pago_categoria_id','pago_subcategoria_id'),
+			
+			/* Setup URL POST for each child */
+			/* List in order as per above */
+			'dd_url' => array('', site_url().'pagos_controller/get_subcategorias/'),
+			
+			/* Loader displayed next to the parent dropdown while the child loads */
+			'dd_ajax_loader' => base_url().'img/ajax-loader.gif'
+		);
+		$output->dropdown_setup = $dd_data;
+
+		$this->_mostrarPagos($output);		
 	}	
+
+	/* Obtener subcategorias con JSON */
+	function get_subcategorias(){
+		$subcategoria_id = $this->uri->segment(3);
+
+		$this->db->select("*")
+				 ->from('subcategorias')
+				 ->where('subcategoria_categoria_id',$subcategoria_id);
+
+		$db = $this->db->get();
+
+		$array = array();
+		foreach($db->result() as $row):
+			$array[] = array("value" => $row->subcategoria_id, "property" => $row->subcategoria_descripcion);
+		endforeach;
+		
+		echo json_encode($array);
+		exit;
+	}
 
 	function add_field_callback_importe()
 	{
@@ -85,7 +122,7 @@ class Pagos_Controller extends CI_Controller {
 		return '<span class="add-on">$ </span><input class="span2" id="appendedPrependedInput" size="16" type="text" name="pago_importe" value="'.$value.'">';
 	}
 
-	function mostrarPagos($output=null){
+	function _mostrarPagos($output=null){
 		$this->load->view('templates/header',$output);
 		//$this->load->view('templates/groceryCRUD',$output);
 		$this->load->view('templates/menu');
