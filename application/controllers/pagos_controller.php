@@ -36,6 +36,7 @@ class Pagos_Controller extends CI_Controller {
 						'pago_importe','pago_categoria_id','pago_subcategoria_id',
 						'pago_medio_de_pago_id','pago_usuario_id','pago_estado_pago_id',
 						'created_at','updated_at');
+
 		$crud->edit_fields('pago_nro_referencia','pago_periodo_desde','pago_periodo_hasta',
 						'pago_fecha_vencimiento','pago_detalle','pago_archivo_comprobante',
 						'pago_importe','pago_categoria_id','pago_subcategoria_id',
@@ -48,7 +49,7 @@ class Pagos_Controller extends CI_Controller {
 
 		$crud->change_field_type('pago_usuario_id','hidden',3);
 
-		$now = date('d/m/Y h:m:s');
+		$now = date('Y-m-d H:i:s');
 		
 		$crud->change_field_type('created_at','hidden',$now);
 		$crud->change_field_type('updated_at','hidden',$now);
