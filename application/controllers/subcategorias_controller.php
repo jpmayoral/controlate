@@ -23,10 +23,10 @@ class Subcategorias_Controller extends CI_Controller {
 
 		$output = $crud->render();
 
-		$this->mostrarSubcategorias($output);		
+		$this->_mostrarSubcategorias($output);		
 	}	
 	
-	function mostrarSubcategorias($output=null){
+	function _mostrarSubcategorias($output=null){
 		$this->load->view('templates/header',$output);
 		//$this->load->view('templates/groceryCRUD',$output);
 		$this->load->view('templates/menu');

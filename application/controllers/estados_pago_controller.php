@@ -22,10 +22,10 @@ class Estados_Pago_Controller extends CI_Controller {
 
 		$output = $crud->render();
 
-		$this->mostrarEstasdosPago($output);		
+		$this->_mostrarEstasdosPago($output);		
 	}	
 	
-	function mostrarEstasdosPago($output=null){
+	function _mostrarEstasdosPago($output=null){
 		$this->load->view('templates/header',$output);
 		//$this->load->view('templates/groceryCRUD',$output);
 		$this->load->view('templates/menu');

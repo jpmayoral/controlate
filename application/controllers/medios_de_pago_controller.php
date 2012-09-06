@@ -22,10 +22,10 @@ class Medios_De_Pago_Controller extends CI_Controller {
 
 		$output = $crud->render();
 
-		$this->mostrarMediosDePago($output);		
+		$this->_mostrarMediosDePago($output);		
 	}	
 	
-	function mostrarMediosDePago($output=null){
+	function _mostrarMediosDePago($output=null){
 		$this->load->view('templates/header',$output);
 		//$this->load->view('templates/groceryCRUD',$output);
 		$this->load->view('templates/menu');

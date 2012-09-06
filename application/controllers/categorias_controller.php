@@ -22,10 +22,10 @@ class Categorias_Controller extends CI_Controller {
 
 		$output = $crud->render();
 
-		$this->mostrarCategorias($output);		
+		$this->_mostrarCategorias($output);		
 	}	
 	
-	function mostrarCategorias($output=null){
+	function _mostrarCategorias($output=null){
 		$this->load->view('templates/header',$output);
 		//$this->load->view('templates/groceryCRUD',$output);
 		$this->load->view('templates/menu');

@@ -115,12 +115,12 @@ class Pagos_Controller extends CI_Controller {
 
 	function add_field_callback_importe()
 	{
-		return '<span class="add-on">$ </span><input class="span2" id="appendedPrependedInput" size="16" type="text" name="pago_importe">';
+		return '$ <input class="span2" id="appendedPrependedInput" size="16" type="text" name="pago_importe"> (ej.: 15.70)';
 	}
 	
 	function edit_field_callback_importe($value,$primary_key)
 	{		
-		return '<span class="add-on">$ </span><input class="span2" id="appendedPrependedInput" size="16" type="text" name="pago_importe" value="'.$value.'">';
+		return '$ <input class="span2" id="appendedPrependedInput" size="16" type="text" name="pago_importe" value="'.$value.'"> (ej.: 15.70)';
 	}
 
 	function _mostrarPagos($output=null){
