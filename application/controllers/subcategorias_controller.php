@@ -19,6 +19,8 @@ class Subcategorias_Controller extends CI_Controller {
 		$crud->display_as('subcategoria_categoria_id','Categoria');
 		$crud->set_relation('subcategoria_categoria_id','categorias','categoria_descripcion');
 
+		$crud->order_by('subcategoria_descripcion');
+
 		$output = $crud->render();
 
 		$this->mostrarSubcategorias($output);		

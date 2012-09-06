@@ -23,7 +23,7 @@
 			<script src="<?=$file?>"></script>
 		<? endforeach; ?>
 	<? else: ?>
-		<script src="<?=base_url()?>assets/grocery_crud/js/jquery-1.8.0.min.js"></script>
+		<script src="<?=base_url()?>assets/grocery_crud/js/jquery-1.8.1.min.js"></script>
 	<? endif;?>
 
 	<!-- Javascript placed at the end of the document so the pages load faster -->

@@ -59,7 +59,7 @@ class Pagos_Controller extends CI_Controller {
 				'pago_subcategoria_id','pago_medio_de_pago_id','pago_usuario_id','pago_estado_pago_id');
 
 		/* Elimino el editor de textos del campo detalle */
-		$crud->unset_texteditor('pago_detalle');
+		//$crud->unset_texteditor('pago_detalle');
 
 		/* modifico el html del campo importe */
 		$crud->callback_add_field('pago_importe',array($this,'add_field_callback_importe'));
