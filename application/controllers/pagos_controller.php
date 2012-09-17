@@ -43,10 +43,13 @@ class Pagos_Controller extends CI_Controller {
 						'pago_medio_de_pago_id','pago_usuario_id','pago_estado_pago_id',
 						'updated_at');		
 
+		/* obtengo el id del usuario desde la session */
+		$crud->change_field_type('pago_usuario_id','hidden',$this->session->userdata['logged_in']['usuario_id']);
+
 		/* Seteo el campo comprobante para subir archivos */
 		$crud->set_field_upload('pago_archivo_comprobante',$this->verificar_path_callback());
 
-		$crud->change_field_type('pago_usuario_id','hidden',3);
+		//$crud->change_field_type('pago_usuario_id','hidden',3);
 
 		$now = date('Y-m-d H:i:s');
 		
@@ -124,19 +127,79 @@ class Pagos_Controller extends CI_Controller {
 
 	/* Funcion para cambiar el path del archivo segun el mes y año */
 	function verificar_path_callback(){
+
+		$fecha_vencimiento = $this->input->post('pago_fecha_vencimiento');	
 		
-		$path = APLICATION_PATH.'/assets/uploads/files/2013';
-		
-		if(is_dir($path)){
-			return $path;	
-		}else{
-			if(mkdir($path,0777)){
-				return $path;
+		if($fecha_vencimiento){
+			
+			$fecha_vencimiento = explode('/', $fecha_vencimiento);
+			$anio = $fecha_vencimiento[2];
+
+			$mes = $this->obtenerMes($fecha_vencimiento[1]);
+
+			/* Path para la carpeta con el anio */
+			$primer_path = APLICATION_PATH.'/assets/uploads/files/'.$anio;
+
+			/* path para la carpeta con el mes */
+			$segundo_path = $primer_path.'/'.$mes;
+
+			if(is_dir($primer_path)){
+				if(is_dir($segundo_path)){			
+					return $segundo_path;	
+				}else{
+					if(mkdir($segundo_path,DIR_WRITE_MODE)){
+						return $segundo_path;
+					}else{
+						echo "problemas al crear la carpeta ".$segundo_path;
+						exit;
+					}
+				}	
 			}else{
-				echo "problemas al crear la carpeta ".$path;
-				exit;
-			}
-		}				
+				mkdir($primer_path,DIR_WRITE_MODE);
+				if(is_dir($segundo_path)){			
+					return $segundo_path;	
+				}else{
+					if(mkdir($segundo_path,DIR_WRITE_MODE)){
+						return $segundo_path;
+					}else{
+						echo "problemas al crear la carpeta ".$segundo_path;
+						exit;
+					}
+				}	
+			}					
+		}			
+	}
+
+	/* Devuelvo el mes en string */
+	function obtenerMes($mes){			
+
+		switch($mes){
+			case '01': return 'Enero';
+					break;
+			case '02': return 'Febrero';
+					break;
+			case '03': return 'Marzo';
+					break;
+			case '04': return 'Abril';
+					break;
+			case '05': return 'Mayo';
+					break;
+			case '06': return 'Junio';
+					break;
+			case '07': return 'Julio';
+					break;
+			case '08': return 'Agosto';
+					break;
+			case '09': return 'Septiembre';
+					break;
+			case '10': return 'Octubre';
+					break;
+			case '11': return 'Noviembre';
+					break;
+			case '12': return 'Diciembre';
+					break;
+			default: return 'Error';
+		}
 	}
 
 	function _mostrarPagos($output=null){
