@@ -36,6 +36,17 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
+/*
+|--------------------------------------------------------------------------
+| Application Path
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+define('APLICATION_PATH','/var/www/controlate');
+
+
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

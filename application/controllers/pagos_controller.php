@@ -41,11 +41,10 @@ class Pagos_Controller extends CI_Controller {
 						'pago_fecha_vencimiento','pago_detalle','pago_archivo_comprobante',
 						'pago_importe','pago_categoria_id','pago_subcategoria_id',
 						'pago_medio_de_pago_id','pago_usuario_id','pago_estado_pago_id',
-						'updated_at');
-		
+						'updated_at');		
 
 		/* Seteo el campo comprobante para subir archivos */
-		$crud->set_field_upload('pago_archivo_comprobante', 'assets/uploads/files');
+		$crud->set_field_upload('pago_archivo_comprobante',$this->verificar_path_callback());
 
 		$crud->change_field_type('pago_usuario_id','hidden',3);
 
@@ -121,6 +120,23 @@ class Pagos_Controller extends CI_Controller {
 	function edit_field_callback_importe($value,$primary_key)
 	{		
 		return '$ <input class="span2" id="appendedPrependedInput" size="16" type="text" name="pago_importe" value="'.$value.'"> (ej.: 15.70)';
+	}
+
+	/* Funcion para cambiar el path del archivo segun el mes y año */
+	function verificar_path_callback(){
+		
+		$path = APLICATION_PATH.'/assets/uploads/files/2013';
+		
+		if(is_dir($path)){
+			return $path;	
+		}else{
+			if(mkdir($path,0777)){
+				return $path;
+			}else{
+				echo "problemas al crear la carpeta ".$path;
+				exit;
+			}
+		}				
 	}
 
 	function _mostrarPagos($output=null){
