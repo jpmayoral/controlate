@@ -14,7 +14,7 @@ class Pagos_Controller extends CI_Controller {
 		$crud->set_table('pagos');
 		$crud->set_subject('Pago');
 
-		/* Defino los labels del formulario */
+		/* I define labels for the form */
 		$crud->display_as('pago_nro_referencia','Nº de Referencia');
 		$crud->display_as('pago_periodo_desde','Periodo Desde');
 		$crud->display_as('pago_periodo_hasta','Periodo Hasta');
@@ -30,13 +30,20 @@ class Pagos_Controller extends CI_Controller {
 		$crud->display_as('created_at','Creado');	
 		$crud->display_as('updated_at','Actualizado');
 
-		
+		/* Columns that user can see */
+		$crud->columns('pago_nro_referencia','pago_periodo_desde','pago_periodo_hasta',
+						'pago_fecha_vencimiento','pago_detalle','pago_archivo_comprobante',
+						'pago_importe','pago_categoria_id','pago_subcategoria_id',
+						'pago_medio_de_pago_id','pago_estado_pago_id');
+
+		/* inputs that user see when he add a record */
 		$crud->add_fields('pago_nro_referencia','pago_periodo_desde','pago_periodo_hasta',
 						'pago_fecha_vencimiento','pago_detalle','pago_archivo_comprobante',
 						'pago_importe','pago_categoria_id','pago_subcategoria_id',
 						'pago_medio_de_pago_id','pago_usuario_id','pago_estado_pago_id',
 						'created_at','updated_at');
 
+		/* inputs that user see when he edit a record */
 		$crud->edit_fields('pago_nro_referencia','pago_periodo_desde','pago_periodo_hasta',
 						'pago_fecha_vencimiento','pago_detalle','pago_archivo_comprobante',
 						'pago_importe','pago_categoria_id','pago_subcategoria_id',
@@ -49,8 +56,6 @@ class Pagos_Controller extends CI_Controller {
 		/* Seteo el campo comprobante para subir archivos */
 		$crud->set_field_upload('pago_archivo_comprobante',$this->verificar_path_callback());
 
-		//$crud->change_field_type('pago_usuario_id','hidden',3);
-
 		$now = date('Y-m-d H:i:s');
 		
 		$crud->change_field_type('created_at','hidden',$now);
@@ -59,9 +64,6 @@ class Pagos_Controller extends CI_Controller {
 		/* Campos obligatorios */
 		$crud->required_fields('pago_detalle','pago_importe','pago_categoria_id',
 				'pago_subcategoria_id','pago_medio_de_pago_id','pago_usuario_id','pago_estado_pago_id');
-
-		/* Elimino el editor de textos del campo detalle */
-		//$crud->unset_texteditor('pago_detalle');
 
 		/* modifico el html del campo importe */
 		$crud->callback_add_field('pago_importe',array($this,'add_field_callback_importe'));

@@ -1,5 +1,9 @@
 		<!-- span3: start -->
 		<div class="span3">
+
+			<? if($this->session->userdata('logged_in')):?>
+			<? $session_data = $this->session->userdata('logged_in'); ?>
+
 			<div class="well sidebar-nav">
 				<ul class="nav nav-list">
 					<li class="nav-header">Menu Principal</li>
@@ -23,5 +27,8 @@
 					<li><a href="#">Ayuda</a></li>
 				</ul>
 			</div>
+
+			<? endif; ?>
+
 		</div>
 		<!-- span3: end -->
