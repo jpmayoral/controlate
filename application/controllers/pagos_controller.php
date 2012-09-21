@@ -55,7 +55,8 @@ class Pagos_Controller extends CI_Controller {
 
 		/* Seteo el campo comprobante para subir archivos */
 		$crud->set_field_upload('pago_archivo_comprobante',$this->verificar_path_callback());
-
+		//$crud->set_field_upload('pago_archivo_comprobante','assets/uploads/files');
+		
 		$now = date('Y-m-d H:i:s');
 		
 		$crud->change_field_type('created_at','hidden',$now);
@@ -144,30 +145,45 @@ class Pagos_Controller extends CI_Controller {
 
 			/* path para la carpeta con el mes */
 			$segundo_path = $primer_path.'/'.$mes;
+			/* path url para el link del archivo */
+			$file_path = 'assets/uploads/files/'.$anio.'/'.$mes;
 
+			/* Si ya existe la carpeta con el año */
 			if(is_dir($primer_path)){
+				/* Si ya existe la carpeta con el mes */
 				if(is_dir($segundo_path)){			
-					return $segundo_path;	
+					/* retorno el path url */
+					return $file_path;	
+				/* Si no existe la carpeta con el mes */
 				}else{
+					/* Si puedo crear la carpeta con el mes */
 					if(mkdir($segundo_path,DIR_WRITE_MODE)){
-						return $segundo_path;
+						/* retorno el path url */
+						return $file_path;
+					/* Si no puedo crear la carpeta del mes */
 					}else{
 						echo "problemas al crear la carpeta ".$segundo_path;
 						exit;
 					}
-				}	
+				}
+			/* Si no existe la carpeta con el año */	
 			}else{
-				mkdir($primer_path,DIR_WRITE_MODE);
-				if(is_dir($segundo_path)){			
-					return $segundo_path;	
-				}else{
+				/* Creo la carpeta con el año */
+				if(mkdir($primer_path,DIR_WRITE_MODE,true)){
+					/* Si puedo crear la carpeta con el mes */
 					if(mkdir($segundo_path,DIR_WRITE_MODE)){
-						return $segundo_path;
+						/* retorno el path url */
+						return $file_path;
+					/* Si no puedo crear la carpeta del mes */
 					}else{
 						echo "problemas al crear la carpeta ".$segundo_path;
 						exit;
-					}
-				}	
+					}					
+				/* Si no puedo crear la carpeta con el año */
+				}else{
+					echo "problemas al crear la carpeta ".$segundo_path;
+					exit;
+				}						
 			}					
 		}			
 	}
