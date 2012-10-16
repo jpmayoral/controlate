@@ -54,8 +54,8 @@ class Pagos_Controller extends CI_Controller {
 		$crud->change_field_type('pago_usuario_id','hidden',$this->session->userdata['logged_in']['usuario_id']);
 
 		/* Seteo el campo comprobante para subir archivos */
-		$crud->set_field_upload('pago_archivo_comprobante',$this->verificar_path_callback());
-		//$crud->set_field_upload('pago_archivo_comprobante','assets/uploads/files');
+		//$crud->set_field_upload('pago_archivo_comprobante',$this->verificar_path_callback());
+		$crud->set_field_upload('pago_archivo_comprobante','assets/uploads/files');
 		
 		$now = date('Y-m-d H:i:s');
 		
