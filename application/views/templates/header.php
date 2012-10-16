@@ -47,6 +47,23 @@
 	}
 	</style>
 
+	<script>		
+		$(document).ready(function(){
+			var str = location.href;			
+			$("ul.nav.nav-list > li a").each(function() {
+				if (str.indexOf(this.href) > -1) { // Si no encuentra en el string devuelve -1
+					$("ul.nav.nav-list > li").removeClass("active");
+					$(this).parent().addClass("active");
+				}
+			});
+			$("ul.nav.nav-list > li.active").parents().each(function(){
+				if ($(this).is("li")){
+				$(this).addClass("active");
+				}
+			});
+		});			
+	</script>
+
 </head>
 	<body>
 		<!-- container-fluid: start -->

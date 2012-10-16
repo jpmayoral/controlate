@@ -140,7 +140,7 @@ class Pagos_Controller extends CI_Controller {
 
 			$mes = $this->obtenerMes($fecha_vencimiento[1]);
 
-			/* Path para la carpeta con el anio */
+			/* Path para la carpeta con el año */
 			$primer_path = APLICATION_PATH.'/assets/uploads/files/'.$anio;
 
 			/* path para la carpeta con el mes */

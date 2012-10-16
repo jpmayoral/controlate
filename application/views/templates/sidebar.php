@@ -6,8 +6,7 @@
 
 			<div class="well sidebar-nav">
 				<ul class="nav nav-list">
-					<li class="nav-header">Menu Principal</li>
-						<li class="active"><a href="<?=base_url().'pagos_controller/index/add';?>">Cargar Pago</a></li>
+					<li class="nav-header">Menu Principal</li>						
 						<li><a href="<?=base_url()?>pagos_controller/">Mis Pagos</a></li>									
 						<li><a href="#">Mis Comprobantes</a></li>						
 					<li class="nav-header">Reportes</li>
