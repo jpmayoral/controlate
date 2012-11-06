@@ -29,6 +29,9 @@
 	<!-- Javascript placed at the end of the document so the pages load faster -->
 	<script src="<?=base_url()?>assets/bootstrap/js/bootstrap.js"></script>
 
+	<!-- Load the AJAX API for Google Chart Tools -->
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>	
+
 	<!-- For IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

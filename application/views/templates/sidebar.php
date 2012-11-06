@@ -11,7 +11,7 @@
 						<li><a href="#">Mis Comprobantes</a></li>						
 					<li class="nav-header">Reportes</li>
 						<li><a href="#">Semanal</a></li>
-						<li><a href="<?=base_url()?>reportes_cotroller/">Mensual</a></li>
+						<li><a href="<?=base_url()?>reportes_controller/mensual">Mensual</a></li>
 						<li><a href="#">Anual</a></li>
 					<li class="nav-header">Mi Perfil</li>
 						<li><a href="#">Modificar Mis Datos</a></li>

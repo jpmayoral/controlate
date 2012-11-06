@@ -31,9 +31,10 @@ class Pagos_Controller extends CI_Controller {
 		$crud->display_as('updated_at','Actualizado');
 
 		/* Columns that user can see */
-		$crud->columns('pago_nro_referencia','pago_periodo_desde','pago_periodo_hasta',
-						'pago_fecha_vencimiento','pago_detalle','pago_archivo_comprobante',
-						'pago_importe','pago_categoria_id','pago_subcategoria_id',
+		$crud->columns('pago_nro_referencia','pago_fecha_vencimiento',
+						'pago_categoria_id','pago_subcategoria_id',
+						'pago_importe', 'pago_detalle','pago_archivo_comprobante',						
+						'pago_periodo_desde','pago_periodo_hasta',
 						'pago_medio_de_pago_id','pago_estado_pago_id');
 
 		/* inputs that user see when he add a record */
@@ -63,7 +64,7 @@ class Pagos_Controller extends CI_Controller {
 		$crud->change_field_type('updated_at','hidden',$now);
 
 		/* Campos obligatorios */
-		$crud->required_fields('pago_detalle','pago_importe','pago_categoria_id',
+		$crud->required_fields('pago_importe','pago_categoria_id',
 				'pago_subcategoria_id','pago_medio_de_pago_id','pago_usuario_id','pago_estado_pago_id');
 
 		/* modifico el html del campo importe */

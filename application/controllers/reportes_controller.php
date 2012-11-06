@@ -11,11 +11,17 @@ class Reportes_Controller extends CI_Controller
 	}
 
 	function index(){
-		$this->load->view('templates/header',$output);		
+		echo "hola";
+	}
+
+	function mensual(){
+		$data['titulo'] = 'Reporte Mensual';
+
+		$this->load->view('templates/header');		
 		$this->load->view('templates/menu');
 		$this->load->view('templates/sidebar');		
-		$this->load->view('reportes/reporte_mensual_view.php');
-		$this->load->view('templates/footer',$output);	
+		$this->load->view('reportes/reporte_mensual_view.php',$data);
+		$this->load->view('templates/footer');
 	}
 	
 }
